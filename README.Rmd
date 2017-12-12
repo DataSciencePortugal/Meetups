@@ -1,0 +1,134 @@
+---
+output: rmarkdown::github_document
+always_allow_html: yes
+---
+
+![](img/DSPT_logo.png)
+
+## DSPT Github Repository
+
+Hello,
+
+Here is the repository where all the presentations from our past meetups are kept.
+
+If you want to know more about our community, check out our [meetup page](https://www.meetup.com/datascienceportugal) and join us!
+
+You can also check here below some interesting information about our community, which is continously growing since the first session on 20^th^ of September 2016.
+
+```{r packages, message=FALSE, warning=FALSE, include=FALSE, paged.print=FALSE}
+library(meetupr) # for getting meetups info (Meetup's API)
+library(tidyverse) 
+library(highcharter) # for interactive visualizations
+library(wordcloud)
+
+# To run the meetupr functions, a meetup API key is needed
+# Sys.setenv(MEETUP_KEY = "A key is needed here")
+Sys.setenv(MEETUP_NAME = "Data Science Portugal (DSPT)")
+
+urlmeetup <- "datascienceportugal"
+```
+
+```{r import, include=FALSE}
+# Get events information
+past_events <- get_events(urlname = urlmeetup,
+                          event_status = "past")
+
+# Get active members
+current_members <- get_members(urlname = urlmeetup)
+```
+
+```{r transforming, include=FALSE}
+# Transform the DSPT past events tibble for analysis
+past_events <- past_events %>%
+  select(id, name, local_date, local_time, waitlist_count,
+         yes_rsvp_count, venue_name, venue_city, description, link) %>% 
+  separate(name,
+           into = c("evn_number", "title"),
+           sep = "[[:space:]]{0,}-[[:space:]]{0,}",
+           extra = "merge") 
+
+# Remove the Postal Code for some venue cities
+past_events$venue_city <- past_events$venue_city %>% 
+  str_extract_all("[A-Z]{1}[a-z]*") %>% 
+  unlist()
+
+# Transform the DSPT members tibble for analysis
+current_members <- current_members %>% 
+  select(city, country, lat, lon)
+
+city_members <- current_members %>% 
+  count(city)
+
+session_by_cities <- past_events %>% 
+  count(venue_city) %>% 
+  arrange(desc(n))
+
+```
+
+### DSPT Members' demography
+
+There are currently **`r length(current_members$city)`** active members/followers in our meetup page. They are from  the **`r length(city_members$city)`** cities around the world shown here after. 
+
+```{r visualizing1, echo=FALSE, , fig.height=5, fig.width=8, message=FALSE, warning=FALSE, paged.print=FALSE}
+# Where are DSPT meetupERS coming from?
+
+wordcloud(words = city_members$city,
+          freq = city_members$n,
+          min.freq = 1,
+          scale = c(5, .8),
+          colors = brewer.pal(12, "RdBu"))
+
+```
+
+### We began in the north of Portugal, but we're expanding to other cities too. 
+
+By **`r max(past_events$local_date)`** we've already performed **`r length(past_events$id)`** meetups.
+Sessions have been held in several cities in Portugal, most of them in **`r session_by_cities$venue_city[1]`** and **`r session_by_cities$venue_city[2]`**.
+
+```{r visualizing3, echo=FALSE, fig.height=6, fig.width=8}
+highchart() %>%
+  hc_add_series(session_by_cities, "column", hcaes(x = venue_city, y = n),
+                color = "#D4432F", name = "meetups", showInLegend = FALSE) %>%
+  hc_add_theme(hc_theme_smpl()) %>%
+  hc_title(text = "Venue Cities",
+           style = list(fontSize = "22px")) %>%
+  hc_subtitle(text = paste("last ", length(past_events$id)," DSPT meetups"),
+              style = list(fontSize = "12px")) %>%
+  hc_yAxis(title = list(text = "Meetups")) %>%
+  hc_xAxis(categories = session_by_cities$venue_city) %>%
+  hc_xAxis(title = list(text = "Venue cities")) %>%
+  hc_credits(enabled = TRUE, # add credits
+             text = "Data source: DSPT Meetup / R package: meetupR & highcharter") %>%
+  hc_tooltip(crosshairs = FALSE, backgroundColor = "#DDDEE6",
+             shared = FALSE, borderWidth = 2)
+```
+
+### Which have been the most captivating sessions? 
+
+The session where most people have replied **YES** to the *RSVP* request was **`r past_events$evn_number[past_events$yes_rsvp_count == max(past_events$yes_rsvp_count)]`** - **`r past_events$title[past_events$yes_rsvp_count == max(past_events$yes_rsvp_count)]`**, held in **`r past_events$venue_city[past_events$yes_rsvp_count == max(past_events$yes_rsvp_count)]`** on **`r past_events$local_date[past_events$yes_rsvp_count == max(past_events$yes_rsvp_count)]`**.
+
+```{r visualizing2, echo=FALSE, fig.height=6, fig.width=8}
+
+# How many DSPT meetupERS have replied (RSVP) to each session
+highchart() %>%
+  hc_add_series(past_events,
+                type = "column",
+                hcaes(x = evn_number, y = yes_rsvp_count),
+                name = "MeetupERS",
+                color = "#149194",
+                showInLegend = FALSE) %>%
+  hc_add_theme(hc_theme_smpl()) %>%
+  hc_title(text = "DSPT attendees by meetup",
+           style = list(fontSize = "22px")) %>%
+  hc_subtitle(text = "meetupERS who replied YES to RSVP",
+              style = list(fontSize = "12px")) %>%
+  hc_yAxis(title = list(text = "Attendees")) %>%
+  hc_xAxis(categories = past_events$evn_number) %>%
+  hc_xAxis(title = list(text = "Session")) %>%
+  hc_credits(enabled = TRUE, # add credits
+             text = "Data source: DSPT Meetup / R package: meetupR & highcharter") %>%
+  hc_tooltip(pointFormat = "{point.title}",
+             crosshairs = FALSE, backgroundColor = "#DDDEE6",
+             shared = FALSE, borderWidth = 2)
+
+```
