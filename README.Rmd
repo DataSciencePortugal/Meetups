@@ -48,6 +48,7 @@ past_events <- past_events %>%
            extra = "merge") 
 
 # Remove the Postal Code for some venue cities
+past_events$venue_city[29] <- "Ilhavo"
 past_events$venue_city <- past_events$venue_city %>% 
   str_extract_all("[A-Z]{1}[a-z]*") %>% 
   unlist()
@@ -67,7 +68,7 @@ session_by_cities <- past_events %>%
 
 ### DSPT Members' demography
 
-There are currently **`r length(current_members$city)`** active members/followers in our meetup page. They are from  the **`r length(city_members$city)`** cities around the world shown here after. 
+There are currently **`r length(current_members$city)`** active members/followers in our meetup page. They are from  the **`r length(city_members$city)`** cities around the world, as shown here after.
 
 ```{r visualizing1, echo=FALSE, , fig.height=5, fig.width=8, message=FALSE, warning=FALSE, paged.print=FALSE}
 # Where are DSPT meetupERS coming from?

@@ -14,13 +14,13 @@ You can also check here below some interesting information about our community, 
 
 ### DSPT Members' demography
 
-There are currently **820** active members/followers in our meetup page. They are from the **80** cities around the world shown here after.
+There are currently **1169** active members/followers in our meetup page. They are from the **95** cities around the world, as shown here after.
 
 ![](README_files/figure-markdown_github/visualizing1-1.png)
 
 ### We began in the north of Portugal, but we're expanding to other cities too.
 
-By **2017-12-05** we've already performed **19** meetups. Sessions have been held in several cities in Portugal, most of them in **Porto** and **Aveiro**.
+By **2018-04-26** we've already performed **29** meetups. Sessions have been held in several cities in Portugal, most of them in **Porto** and **Aveiro**.
 
 ![](README_files/figure-markdown_github/visualizing3-1.png)
 
