@@ -3,7 +3,7 @@ output: rmarkdown::github_document
 always_allow_html: yes
 ---
 
-![](img/DSPT_logo.png)
+<center><a href="https://www.datascienceportugal.com"><img src="img/NewLogoDS_Black.png" align="middle" height="100%" width="70%" margin="0 auto" /></a></center>
 
 ## DSPT Github Repository
 
@@ -13,16 +13,18 @@ Here is the repository where all the presentations from our past meetups are kep
 
 If you want to know more about our community, check out our [meetup page](https://www.meetup.com/datascienceportugal) and join us!
 
-You can also check here below some interesting information about our community, which is continously growing since the first session on 20^th^ of September 2016.
+You can also check here below some interesting information about our community, which is continuously growing since the first session on 20^th^ of September 2016.
 
 ```{r packages, message=FALSE, warning=FALSE, include=FALSE, paged.print=FALSE}
 library(meetupr) # for getting meetups info (Meetup's API)
 library(tidyverse) 
 library(highcharter) # for interactive visualizations
 library(wordcloud)
+library(webshot) # to render highcharter
+#webshot::install_phantomjs()
 
 # To run the meetupr functions, a meetup API key is needed
-# Sys.setenv(MEETUP_KEY = "A key is needed here")
+Sys.setenv(MEETUP_KEY = "16366c3c2a1871a4ef511058344776")
 Sys.setenv(MEETUP_NAME = "Data Science Portugal (DSPT)")
 
 urlmeetup <- "datascienceportugal"
@@ -39,16 +41,19 @@ current_members <- get_members(urlname = urlmeetup)
 
 ```{r transforming, include=FALSE}
 # Transform the DSPT past events tibble for analysis
+
 past_events <- past_events %>%
   select(id, name, local_date, local_time, waitlist_count,
          yes_rsvp_count, venue_name, venue_city, description, link) %>% 
   separate(name,
            into = c("evn_number", "title"),
-           sep = "[[:space:]]{0,}-[[:space:]]{0,}",
+           sep = "[:space:]{0,}[-|:–][:space:]{0,}",
            extra = "merge") 
 
 # Remove the Postal Code for some venue cities
-past_events$venue_city[29] <- "Ilhavo"
+past_events$venue_city[29] <- "Aveiro"
+past_events$venue_city <- ifelse(past_events$venue_city=='Lisbon', 'Lisboa', past_events$venue_city)
+
 past_events$venue_city <- past_events$venue_city %>% 
   str_extract_all("[A-Z]{1}[a-z]*") %>% 
   unlist()
@@ -77,7 +82,7 @@ wordcloud(words = city_members$city,
           freq = city_members$n,
           min.freq = 1,
           scale = c(5, .8),
-          colors = brewer.pal(12, "RdBu"))
+          colors = brewer.pal(11, "RdBu"))
 
 ```
 
