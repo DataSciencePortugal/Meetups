@@ -5,4 +5,4 @@ Meetup info at: https://www.meetup.com/datascienceportugal/events/266240516/
 Talk:
     Automatic Model Monitoring for Data Streams - Marco Sampaio
 
-The secound half of the event was a painel discussion.
+The second half of the event was a panel discussion.
