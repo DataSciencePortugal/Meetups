@@ -1,0 +1,3 @@
+[submodule "2021/20210624-tutorial#1/original-repository"]
+	path = "2021/20210624-tutorial#1/original-repository"
+	url = https://github.com/luisroque/probabilistic-deep-learning.git
