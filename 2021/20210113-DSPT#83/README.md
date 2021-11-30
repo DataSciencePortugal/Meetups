@@ -1,9 +1,16 @@
-# Meetup Webinar 83 presentations
+# DSPT - Meetup/Webinar #83
 
-Meetup info is at: https://www.meetup.com/datascienceportugal/events/275548767/
+![](https://secure.meetupstatic.com/photos/event/b/6/3/f/highres_494206655.jpeg)
 
-Talk :
+## "Fairness-Aware Hyperparameter Optimization"
+### André Cruz
 
-Fairness-Aware Hyperparameter Optimization by André Cruz
+Meetup info: https://www.meetup.com/datascienceportugal/events/275548767/
+
+YouTube: https://www.youtube.com/watch?v=PiKLuitDuHY&t&ab_channel=DataSciencePortugal
+
+---
+[https://www.datascienceportugal.com/](https://www.datascienceportugal.com/)
+
 
 
