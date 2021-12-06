@@ -1,0 +1,17 @@
+name: iris-prediction
+
+conda_env: conda.yml
+
+entry_points:
+  main:
+    parameters:
+      max_depth: {float, default: 4.0}
+      gamma: {type: float, default: 2.99}
+      reg_alpha: {type: float, default: 0.0}
+      reg_lambda: {type: float, default: 0.86}
+      colsample_bytree: {type: float, default: 0.48}
+      min_child_weight: {type: float, default: 8.0}
+      eta: {type: float, default: 0.3}
+      objective: {type: string, default: "multi:softpro"}
+      eval_metric: {type: string, default: "mlogloss"}
+    command: "python train.py {max_depth} {gamma} {reg_alpha} {reg_lambda} {colsample_bytree} {min_child_weight} {eta} {objective} {eval_metric}"
