@@ -1,3 +1,13 @@
+# DSPT - Meetup/Tutorial #2
+
+![](./.img/dspt_tutorial_2.jpg)
+
+* Meetup info: https://www.youtube.com/watch?v=qZIEXh4v-5w
+* YouTube: https://www.youtube.com/watch?v=qZIEXh4v-5w
+* https://www.datascienceportugal.com
+
+---
+
 # Managing the ML lifecycle with Mlflow
 
 In this workshop, we will explore the functionalities of Mlflow as a platform for managing the lifecycle of machine learning experiments and models.
