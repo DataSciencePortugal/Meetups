@@ -7,7 +7,7 @@
 ###  Luis Roque
 
 Meetup info: https://www.meetup.com/datascienceportugal/events/297232475
-
+Materials: https://github.com/DataSciencePortugal/large-language-models
 
 ---
 [https://www.meetup.com/datascienceportugal/](https://www.meetup.com/datascienceportugal/)
