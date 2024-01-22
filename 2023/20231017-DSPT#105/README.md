@@ -9,6 +9,6 @@
 
 Meetup info: https://www.meetup.com/datascienceportugal/events/296514399/
 
-Materials: 
+Materials: [slides](https://github.com/DataSciencePortugal/Meetups/blob/master/2023/20231017-DSPT%23105/Revolutionizing%20Garment%20Fit%20Assessment%20A%20Data-Driven%20Solution%20to%20Improve%20Customer%20Satisfaction.pdf)
 ---
 [https://www.meetup.com/datascienceportugal/](https://www.meetup.com/datascienceportugal/)
