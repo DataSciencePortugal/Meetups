@@ -10,7 +10,7 @@
 
 ###  Rafael Guedes
 
-Slides: https://github.com/DataSciencePortugal/Meetups/blob/meetup115/2024/DSPT%23115/LLMstudio%20DSPT.pdf
+Slides: https://github.com/DataSciencePortugal/Meetups/blob/meetup116/2024/DSPT%23116/DSPT%20Talk_%20LLMs%20-%20a%20theoretical%20overview%20of%20LLaMA%203%2C%20Gemma%20and%20Mistral.pdf
 
 Tutorial: https://github.com/rjguedes8/dspy/blob/main/DSPy.ipynb
 
