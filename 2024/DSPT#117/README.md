@@ -14,7 +14,7 @@
 
 The diagnosis of infection by the bacteria Helicobacter Pylori is often performed through manual analysis of histological images, which, due to the considerable size of these images, becomes an exhaustive task for pathologists. In this talk, we'll show you how we used Machine Learning techniques to automatically detect the presence of bacteria, indicating its location in the images. Additionally, by combining the detection of the bacterium with the identification of inflammation in the tissue, it is possible to perform the final diagnosis quickly and efficiently, also allowing visualization of the specific points in the image that support the diagnosis.
 
-Slides:
+Slides: https://github.com/DataSciencePortugal/Meetups/blob/meetup117/2024/DSPT%23117/Machine%20Learning%20for%20Helicobacter%20Pylori%20Analysis%20and%20Diagnosis%20in%20Whole%20Slide%20Image_Raquel%20Belo.pdf
 
 
 ### João Pedro Pedroso, Associate Professor@ FCUP
@@ -25,7 +25,7 @@ Renal diseases affect thousands of patients who, to survive, must incur in dialy
 The problem has been studied under different perspectives, but the most commonly used objective is maximizing the number of patients in the pool for which a crossed transplant is possible.
 We propose to change this objective by that of maximizing the cumulative patient survival times. This model departs from the previous deterministic setting, putting into play a method for predicting survival time based on historical data.
 
-Slides:
+Slides: https://github.com/DataSciencePortugal/Meetups/blob/meetup117/2024/DSPT%23117/Improving%20Kidney%20Exchange%20Programs_Jo%C3%A3o%20Pedro%20Pedroso.pdf
 
 ---
 [https://www.meetup.com/datascienceportugal/](https://www.meetup.com/datascienceportugal/)
